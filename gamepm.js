@@ -9,6 +9,10 @@ let xposfd = 200;
 let yposfd = 200;
 let ctr = 0;
 let speed = 0.5;        // adjust this and timeout on line 18 for lower refresh rate displays currently setup for 144Hz
+const imga = new Image();
+imga.src = "./grl.jpg";
+const imgb = new Image();
+imgb.src = "./cat.jpg";
 
 window.onload = function () {
     console.log("Hello");
@@ -24,12 +28,10 @@ function draw() {
     //console.log(posx1 , posx1 - 110 , posx1 - 220 , posx1 - 330);
     canvasContext.fillStyle = 'black';
     canvasContext.fillRect(0, 0, canvas.width, canvas.height);
-    canvasContext.fillStyle = 'red';
-    canvasContext.fillRect(posx1, posy1, 50, 50);
+    canvasContext.drawImage(imga , 0 , 0 , 120 , 120 , posx1 , posy1 , 50 , 50);
     if((posx1 < xposfd - 50 || posx1 > xposfd + 50) || (posy1 < yposfd - 50 || posy1 > yposfd + 50))
     {
-        canvasContext.fillStyle = 'red';
-        canvasContext.fillRect( xposfd , yposfd , 50, 50);
+        canvasContext.drawImage(imgb , 0 , 0 , 120 , 120 , xposfd , yposfd , 50 , 50);
     }
     else
     {
